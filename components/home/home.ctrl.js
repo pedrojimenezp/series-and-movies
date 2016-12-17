@@ -10,6 +10,7 @@
       this.query = ""
       this.totalPages = 0
       this.currentPage = 1
+      this.firstLoadMore = true;
 
       // funcion encargada de buscar los posts utilizando el el moviesService
       this.searchPosts = () => {
@@ -28,7 +29,7 @@
               }
               //se llenan los posts
               if (this.currentPage > 1) {
-                this.posts = [...this.post, ...data.Search]
+                this.posts = [...this.posts, ...data.Search]
               } else {
                 this.posts = data.Search
               }
@@ -59,12 +60,15 @@
       }, 500)
 
       //funcion que carga mas post a medida que se da scroll
-      this.loadMore = () => {
-        console.log("loading more content...")
+      this.loadMore = _.throttle(() => {
+        if (this.firstLoadMore) {
+          this.firstLoadMore = false
+          return
+        }
         if (this.currentPage < this.totalPages) {
           this.currentPage++
-          this.searchPost()
+          this.searchPosts()
         }
-      }
+      }, 500)
     })
 })()
