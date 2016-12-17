@@ -6,6 +6,7 @@
       this.searchDone = false
       this.post = {}
 
+      //se busca un solo post tomando el Id de la URL
       moviesService.searchById($state.params.postId)
         .then((response) => {
           const { data } = response
