@@ -26,6 +26,7 @@
     <h4>Intentar con algo diferente.</h4>
   </div>
 
+  <div infinite-scroll="vm.loadMore()">
   <md-card
     ng-repeat="post in vm.posts" flex="30" class="classified">
     <a ui-sref="details({ postId: post.imdbID, q: vm.query })">
@@ -37,4 +38,5 @@
       </div>
     </md-card-content>
   </md-card>
+  </div>
 </md-content>
