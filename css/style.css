@@ -1,0 +1,51 @@
+md-card img {
+  width: 100%;
+  height: auto;
+  min-height: 0px;
+}
+
+md-icon {
+  height: auto;
+}
+
+.classified.ng-enter, .classified.ng-move {
+  transition: 0.4s all;
+  opacity: 0;
+}
+
+.classified.ng-enter.ng-enter-active, .classified.ng-move.ng-move-active {
+  opacity: 1;
+}
+
+.classified.ng-leave {
+  animation: 0.4s fade_classified;
+}
+
+@keyframes fade_classified {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+.row {
+  display: block;
+  width: 100%;
+}
+
+.center {
+  text-align: center;
+}
+
+h3 {
+  font-size: 34px;
+}
+h4 {
+  font-size:28px;
+}
+
+.title {
+  margin-left: 20px;
+}
+
+.info {
+  margin-left: 20px;
+}

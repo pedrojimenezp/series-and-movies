@@ -1,0 +1,40 @@
+<md-toolbar md-scroll-shrink>
+  <div class="md-toolbar-tools">
+    <p><strong>Buscador</strong></p>
+  </div>
+</md-toolbar>
+
+<ui-view></ui-view>
+
+<md-content class="md-padding" layout="row" layout-wrap infinite-scroll='mv.loadMore()'>
+  <div class="row">
+    <md-input-container>
+      <label>Search</label>
+      <input type="text" ng-model="vm.query" placeholder="Serie or movie" ng-change="vm.handleSearchChange()">
+    </md-input-container>
+  </div>
+
+  <br/>
+  <br/>
+
+  <div ng-if="!vm.searchDone && !vm.posts.length" class="row center">
+    <h3>Comienza a buscar tus peliculas favoritas!!!</h3>
+  </div>
+
+  <div ng-if="vm.searchDone && !vm.posts.length" class="row center">
+    <h3>No se encontraron post :(</h3>
+    <h4>Intentar con algo diferente.</h4>
+  </div>
+
+  <md-card
+    ng-repeat="post in vm.posts" flex="30" class="classified">
+    <a ui-sref="details({ postId: post.imdbID, q: vm.query })">
+     <img ng-src="{{ post.Poster }}" class="md-avatar">
+    </a>
+    <md-card-content>
+      <div class="classified-info" ng-show="!showContact">
+        <h2 class="md-title">{{ post.Title }}</h2>
+      </div>
+    </md-card-content>
+  </md-card>
+</md-content>

@@ -1,0 +1,33 @@
+<md-toolbar md-scroll-shrink>
+  <div class="md-toolbar-tools">
+    <p><strong>Detalle > {{ vm.post.Title }}</strong></p>
+  </div>
+</md-toolbar>
+
+<ui-view></ui-view>
+
+<md-content class="md-padding" layout="row" layout-wrap>
+
+  <md-card flex="50" class="classified">
+    <md-card-title>
+      <md-card-title-text>
+        <span class="md-headline title">{{vm.post.Title}}</span>
+      </md-card-title-text>
+    </md-card-title>
+    <md-card-content layout="row">
+      <img ng-src="{{ vm.post.Poster }}" class="md-avatar">
+      <div class="classified-info" ng-show="!showContact">
+        <p class="info"><strong>Nombre:</strong> {{vm.post.Title}}</p>
+        <p class="info"><strong>Genero:</strong> {{vm.post.Genre}}</p>
+        <p class="info"><strong>Descripcion:</strong> {{vm.post.Plot}}</p>
+        <p class="info"><strong>Actores:</strong> {{vm.post.Actors}}</p>
+      </div>
+    </md-card-content>
+    <md-card-actions layout="row">
+        <md-button ng-click="vm.goBack()" >
+          Atras
+        </md-button>
+    </md-card-actions>
+  </md-card>
+
+</md-content>
